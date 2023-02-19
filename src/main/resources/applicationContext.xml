@@ -8,7 +8,17 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="musicBean"
-          class="ru.akopian.spring.RockMusic">
+          class="ru.akopian.spring.RockMusic"
+            factory-method="getRockMusic"
+            init-method="doMyInit"
+            destroy-method="doMyDestroy">
     </bean>
+
+<!--    <bean id ="musicPlayer"-->
+<!--            class="ru.akopian.spring.MusicPlayer"-->
+<!--            scope="prototype">-->
+<!--        <constructor-arg ref="musicBean"/>-->
+<!--    </bean>-->
+                
 
 </beans>
