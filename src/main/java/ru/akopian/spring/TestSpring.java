@@ -6,26 +6,22 @@ public class TestSpring {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml"
-        ); //конфигурационный файл
-        RockMusic rockMusic = context.getBean("musicBean",RockMusic.class);
-        System.out.println(rockMusic.getSong());
+        );//конфигурационный файл
 
-        //Music music = context.getBean("musicBean", Music.class);
-        //MusicPlayer musicPlayer = new MusicPlayer(music);
-        // выше внедряли зависимости вручную
 
-        // здесь используем DI, Sping сам будет внедрять зависимость из контекста
-//        MusicPlayer firstMusicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
-//        MusicPlayer secondMusicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
-//        boolean comparision = firstMusicPlayer == secondMusicPlayer;
+//        Music music1 = context.getBean("rockMusic", Music.class);
+//        MusicPlayer rockMusicPlayer = new MusicPlayer(music1);
+//        rockMusicPlayer.playMusic();
 //
-//
-//        System.out.println(comparision);
-//        System.out.println(firstMusicPlayer);
-//        System.out.println(secondMusicPlayer);
+//        Music music2 = context.getBean("classicalMusic", Music.class);
+//        MusicPlayer classicalMusicPlayer = new MusicPlayer(music2);
+//        classicalMusicPlayer.playMusic();
 
-        //musicPlayer.playMusic();
+//        MusicPlayer musicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
+//        musicPlayer.playMusic();
 
+        Computer computer = context.getBean("computer",Computer.class);
+        System.out.println(computer);
         context.close();
     }
 }

@@ -7,18 +7,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="musicBean"
-          class="ru.akopian.spring.RockMusic"
-            factory-method="getRockMusic"
-            init-method="doMyInit"
-            destroy-method="doMyDestroy">
-    </bean>
-
-<!--    <bean id ="musicPlayer"-->
-<!--            class="ru.akopian.spring.MusicPlayer"-->
-<!--            scope="prototype">-->
-<!--        <constructor-arg ref="musicBean"/>-->
+    <!--         по умолчанию scope singelton-->
+<!--    ручное создание бина-->
+<!--    <bean id="musicBean"-->
+<!--          class="ru.akopian.spring.RockMusic"-->
+<!--            factory-method="getRockMusic"-->
+<!--            init-method="doMyInit"-->
+<!--            destroy-method="doMyDestroy">-->
 <!--    </bean>-->
-                
+
+<!--    Создание бина с помощью Component и внедрение с Autowire-->
+<!--    Мы указываем что нужно просканировать весь пакет-->
+    <context:component-scan base-package="ru.akopian.spring"/>
 
 </beans>

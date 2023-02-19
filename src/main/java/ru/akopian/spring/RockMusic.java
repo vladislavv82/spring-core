@@ -1,5 +1,8 @@
 package ru.akopian.spring;
 
+import org.springframework.stereotype.Component;
+
+@Component//id
 public class RockMusic implements Music{
     private RockMusic(){}
     public static RockMusic getRockMusic(){
