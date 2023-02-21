@@ -1,20 +1,34 @@
 package ru.akopian.spring;
 
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
+
 @Component
 public class MusicPlayer {
-
     private ClassicalMusic classicalMusic;
     private RockMusic rockMusic;
 
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic,RockMusic rockMusic){
-        this.classicalMusic = classicalMusic ;
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
     }
-    public String playMusic(){
-        return "Playing: " + classicalMusic.getSong();
+
+    public void playMusic(MusicGenre genre) {
+        Random random = new Random();
+
+        // случайное целое число между 0 и 2
+        int randomNumber = random.nextInt(3);
+
+        if (genre == MusicGenre.CLASSICAL) {
+            // случайная классическая песня
+            System.out.println(classicalMusic.getSongs().get(randomNumber));
+        } else {
+            // случайная рок песня
+            System.out.println(rockMusic.getSongs().get(randomNumber));
+        }
     }
 }
