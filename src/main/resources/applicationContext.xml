@@ -19,5 +19,5 @@
 <!--    Создание бина с помощью Component и внедрение с Autowire-->
 <!--    Мы указываем что нужно просканировать весь пакет-->
     <context:component-scan base-package="ru.akopian.spring"/>
-
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
 </beans>

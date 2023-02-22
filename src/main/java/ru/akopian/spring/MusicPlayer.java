@@ -2,19 +2,33 @@ package ru.akopian.spring;
 
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
 
 @Component
 public class MusicPlayer {
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+    public String getName() {
+        return name;
+    }
 
-    @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
+    public int getVolume() {
+        return volume;
+    }
+    private Music music1;
+    private Music music2;
+
+@Autowired
+    public MusicPlayer(@Qualifier("rockMusic")Music music1,
+                       @Qualifier("classicalMusic") Music music2) {
+        this.music1 = music1;
+        this.music2 = music2;
     }
 
     public void playMusic(MusicGenre genre) {
@@ -25,10 +39,10 @@ public class MusicPlayer {
 
         if (genre == MusicGenre.CLASSICAL) {
             // случайная классическая песня
-            System.out.println(classicalMusic.getSongs().get(randomNumber));
+            System.out.println(music1.getSongs().get(randomNumber));
         } else {
             // случайная рок песня
-            System.out.println(rockMusic.getSongs().get(randomNumber));
+            System.out.println(music2.getSongs().get(randomNumber));
         }
     }
 }
